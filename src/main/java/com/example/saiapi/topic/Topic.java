@@ -1,7 +1,12 @@
 package com.example.saiapi.topic;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity // JPA knows how to create a table called "topic" with 3 columns
 public class Topic {
 
+   @Id // Primary Key
    private String id;
    private String name;
    private String description;
