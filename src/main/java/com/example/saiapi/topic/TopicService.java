@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TopicService {
@@ -16,13 +14,14 @@ public class TopicService {
 
    public List<Topic> getAllTopics() {
       List<Topic> topics = new ArrayList<>();
-      topicRepository.findAll()
+      topicRepository.findAll() // returns an iterable, so we need to iterate and add each one to topics
       .forEach(topics::add); // Lambdas
+
       return topics;
    }
 
-   public Optional<Topic> getTopic(String id) {
-      return topicRepository.findById(id);
+   public Topic getTopic(String id) {
+      return topicRepository.findOne(id);
    }
 
    public void addTopic(Topic topic) {
@@ -34,6 +33,6 @@ public class TopicService {
    }
 
    public void deleteTopic(String id) {
-      topicRepository.deleteById(id);
+      topicRepository.delete(id);
    }
 }

@@ -13,7 +13,6 @@ public class Topic {
 
    // The object is easier to initialize with a no-args constructor
    public Topic() {
-
    }
 
    public Topic(String id, String name, String description) {
