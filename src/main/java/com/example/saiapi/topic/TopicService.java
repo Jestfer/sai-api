@@ -1,5 +1,6 @@
 package com.example.saiapi.topic;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,9 @@ import java.util.List;
 
 @Service
 public class TopicService {
+
+   @Autowired
+   private TopicRepository topicRepository; // Injects an instance of the topicRepository to the service
 
    private List<Topic> topics = new ArrayList<>(Arrays.asList(
       new Topic("spring", "Spring Framework", "Spring Framework Desc"),
