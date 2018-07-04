@@ -8,7 +8,7 @@ public class Topic {
 
    @Id // Primary Key
    private Integer id;
-   private String name;
+   private String name; // Pass if VARCHAR, length...
    private String description;
 
    // The object is easier to initialize with a no-args constructor
