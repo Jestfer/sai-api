@@ -20,7 +20,7 @@ public class TopicService {
       return topics;
    }
 
-   public Topic getTopic(String id) {
+   public Topic getTopic(Integer id) {
       return topicRepository.findOne(id);
    }
 
@@ -28,11 +28,11 @@ public class TopicService {
       topicRepository.save(topic);
    }
 
-   public void updateTopic(String id, Topic topic) {
+   public void updateTopic(Integer id, Topic topic) {
       topicRepository.save(topic); // topic instance knows which ID it is if row exists... so we just update it
    }
 
-   public void deleteTopic(String id) {
+   public void deleteTopic(Integer id) {
       topicRepository.delete(id);
    }
 }
