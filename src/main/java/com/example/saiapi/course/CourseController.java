@@ -23,19 +23,21 @@ public class CourseController {
       return courseService.getCourse(id);
    }
 
-   @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses/{id}")
+   @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses")
    public void addCourse(@RequestBody Course course, @PathVariable Integer topicId) {
       course.setTopic(new Topic(topicId, "", ""));
       courseService.addCourse(course);
    }
 
-   @RequestMapping(method = RequestMethod.PUT, value = "/courses/{id}")
-   public void updateCourse(@RequestBody Course course, @PathVariable Integer id) {
+   @RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/courses/{id}")
+   public void updateCourse(@RequestBody Course course, @PathVariable Integer topicId, Integer id) {
+      course.setTopic(new Topic(topicId, "", ""));
       courseService.updateCourse(id, course);
    }
 
-   @RequestMapping(method = RequestMethod.DELETE, value = "/courses/{id}")
-   public void deleteCourse(@PathVariable Integer id) {
+   @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{topicId}/courses/{id}")
+   public void deleteCourse(@RequestBody Course course, @PathVariable Integer topicId, Integer id) {
+      course.setTopic(new Topic(topicId, "", ""));
       courseService.deleteCourse(id);
    }
 }
