@@ -1,8 +1,8 @@
-package com.example.saiapi.topic;
+package com.example.saiapi.course;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TopicRepository extends CrudRepository<Topic, Integer> {
+public interface CourseRepository extends CrudRepository<Course, Integer> {
    // getAllTopics()
    // getTopic(String id)
    // updateTopic(Course t)
