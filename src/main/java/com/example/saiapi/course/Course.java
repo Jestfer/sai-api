@@ -1,5 +1,7 @@
 package com.example.saiapi.course;
 
+import com.example.saiapi.topic.Topic;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,14 +13,25 @@ public class Course {
    private String name; // Pass if VARCHAR, length...
    private String description;
 
+   private Topic topic;
+
+   public Topic getTopic() {
+      return topic;
+   }
+
+   public void setTopic(Topic topic) {
+      this.topic = topic;
+   }
+
    // The object is easier to initialize with a no-args constructor
    public Course() {
    }
 
-   public Course(Integer id, String name, String description) {
+   public Course(Integer id, String name, String description, Integer topicId) {
       this.id = id;
       this.name = name;
       this.description = description;
+      this.topic = new Topic(topicId, "", "");
    }
 
    public Integer getId() {

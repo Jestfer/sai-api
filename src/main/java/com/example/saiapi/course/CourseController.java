@@ -1,5 +1,6 @@
 package com.example.saiapi.course;
 
+import com.example.saiapi.topic.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +23,15 @@ public class CourseController {
       return courseService.getCourse(id);
    }
 
-   @RequestMapping(method = RequestMethod.POST, value = "/courses")
-   public void addCourse(@RequestBody Course topic) {
-      courseService.addCourse(topic);
+   @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses/{id}")
+   public void addCourse(@RequestBody Course course, @PathVariable Integer topicId) {
+      course.setTopic(new Topic(topicId, "", ""));
+      courseService.addCourse(course);
    }
 
    @RequestMapping(method = RequestMethod.PUT, value = "/courses/{id}")
-   public void updateCourse(@RequestBody Course topic, @PathVariable Integer id) {
-      courseService.updateCourse(id, topic);
+   public void updateCourse(@RequestBody Course course, @PathVariable Integer id) {
+      courseService.updateCourse(id, course);
    }
 
    @RequestMapping(method = RequestMethod.DELETE, value = "/courses/{id}")
