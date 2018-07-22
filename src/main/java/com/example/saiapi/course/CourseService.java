@@ -15,9 +15,16 @@ public class CourseService {
 
    public List<Course> getAllCourses() {
       List<Course> courses = new ArrayList<>();
-      courseRepository.findAll() // returns an iterable, so we need to iterate and add each one to courses
+      courseRepository.findAll()
       .forEach(courses::add); // Lambdas
+      return courses;
+   }
 
+   // Get course by name
+   public List<Course> getCourseByName(String name) {
+      List<Course> courses = new ArrayList<>();
+      courseRepository.findByName(name)
+      .forEach(courses::add);
       return courses;
    }
 
