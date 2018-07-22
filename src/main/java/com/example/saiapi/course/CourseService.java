@@ -13,9 +13,9 @@ public class CourseService {
    @Autowired
    private CourseRepository courseRepository; // Injects an instance of the courseRepository to the service
 
-   public List<Course> getAllCourses() {
+   public List<Course> getAllCourses(Integer topicId) {
       List<Course> courses = new ArrayList<>();
-      courseRepository.findAll()
+      courseRepository.findByTopicId(topicId)
       .forEach(courses::add); // Lambdas
       return courses;
    }
