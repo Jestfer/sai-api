@@ -18,16 +18,17 @@ public class CourseController {
    }
 
    // Course by name
-   @RequestMapping("/courses/{name}")
+   @RequestMapping("/courses/name/{name}")
+   // Query parameters, not recommended for GET requests: @RequestMapping("/courses?name={name}")
    public List<Course> getCourseByName(@PathVariable String name) {
       return courseService.getCourseByName(name);
    }
 
-   // REMOVED BECAUSE OF AMBIGUITY with above
-   // @RequestMapping("/courses/{id}")
-   // public Optional<Course> getCourse(@PathVariable Integer id) {
-      // return courseService.getCourse(id);
-   // }
+   // Course by id
+   @RequestMapping("/courses/id/{id}")
+   public Optional<Course> getCourse(@PathVariable Integer id) {
+      return courseService.getCourse(id);
+   }
 
    @RequestMapping(method = RequestMethod.POST, value = "/courses")
    public void addCourse(@RequestBody Course course) {

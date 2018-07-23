@@ -28,6 +28,7 @@ public class CourseService {
       return courses;
    }
 
+   // TODO: see if needed
    public Optional<Course> getCourse(Integer id) {
       return courseRepository.findById(id);
    }
