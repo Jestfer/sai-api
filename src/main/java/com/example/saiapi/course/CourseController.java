@@ -38,8 +38,9 @@ public class CourseController {
       courseService.addCourse(course);
    }
 
-   @RequestMapping(method = RequestMethod.PUT, value = "/courses/{id}")
-   public void updateCourse(@RequestBody Course course, @PathVariable Integer id) {
+   @RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/courses/{id}")
+   public void updateCourse(@RequestBody Course course, @PathVariable Integer topicId, @PathVariable Integer id) {
+      course.setTopic(new Topic(topicId, "", ""));
       courseService.updateCourse(id, course);
    }
 
