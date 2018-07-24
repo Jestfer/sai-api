@@ -2,6 +2,7 @@ package com.example.saiapi.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.example.saiapi.topic.Topic;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,8 +31,10 @@ public class CourseController {
       return courseService.getCourse(id);
    }
 
-   @RequestMapping(method = RequestMethod.POST, value = "/courses")
-   public void addCourse(@RequestBody Course course) {
+   @RequestMapping(method = RequestMethod.POST, value = "/topics/{id}/courses")
+   public void addCourse(@RequestBody Course course, @PathVariable Integer id) {
+      Topic topic = new Topic(id, "", "");
+      course.setTopic(topic);
       courseService.addCourse(course);
    }
 
