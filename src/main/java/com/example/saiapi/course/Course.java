@@ -3,13 +3,20 @@ package com.example.saiapi.course;
 import com.example.saiapi.topic.Topic;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Table(name = "course")
 public class Course {
 
    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(columnDefinition = "serial")
    private Integer id;
    private String name; // Pass if VARCHAR, length...
    private String description;
